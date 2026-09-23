@@ -5,7 +5,11 @@
 **Executor:** Atria-CC (Atria-Dawn-Preview, the only authorized model/runtime)
 **Overall status:** **G2 — OWNER-APPROVED FOR THE NEXT IMPLEMENTATION GATE.**
 **Implementation is NOT authorized.** No implementation was performed.
-**NOT COMMITTED / NOT PUSHED.**
+**Git state at G2 closure: NOT COMMITTED / NOT PUSHED.** The G2 closure work itself was
+recorded only in the untracked working tree. A subsequent, separately owner-authorized
+synchronization then committed and pushed exactly this report and `docs/PROJECT-MEMORY.md`
+as commit `edfad61` (`docs: sync LS-0.3 G2 report and memory`). See
+"Record Integrity Repair — Post-Sync" at the end of this report.
 
 ---
 
@@ -171,7 +175,13 @@ This registry contains no source that would support calling any of them a DepEd 
 
 ## 10. Governance documents changed
 
-All changes are untracked in the working tree. **No commit, no push.**
+*Historical G2 closure state:* at the moment this checkpoint was completed, all of these
+changes were untracked in the working tree and **no commit and no push** had occurred. A
+subsequent, separately owner-authorized synchronization then committed and pushed exactly two
+of the artifacts listed below — **this report** and **`docs/PROJECT-MEMORY.md`** — as commit
+`edfad61`. The remaining governance documents in this table (`docs/DECISIONS.md`,
+`docs/ACTIVE-PLAN.md`, `docs/CURRENT-HANDOFF.md`, `docs/SOURCE-REGISTRY.md`, plus `AGENTS.md`
+and `CLAUDE.md`) remain **intentionally untracked** unless separately authorized.
 
 | Document | Change |
 |---|---|
@@ -223,7 +233,10 @@ by the harness safety classifier."
 deletion, and its cause remains **[NOT VERIFIED]**. "Deleted and verified gone" is true as of
 the moment it was checked. If it reappears, the *cause* is the thing to investigate.
 
-## 13. Git HEAD
+## 13. Git HEAD — historical G2 closure state
+
+**This describes the working tree at the moment the G2 closure work itself was completed,**
+before any synchronization. It is preserved unchanged for the record.
 
 ```
 2d099a247ab7232265a0d9e96fd11458094421ba
@@ -231,7 +244,10 @@ the moment it was checked. If it reappears, the *cause* is the thing to investig
 
 **Unchanged since G0.** Parent: `49ca35e`.
 
-## 14. Git status
+## 14. Git status — historical G2 closure state
+
+**This is the `git status` at the moment the G2 closure work itself was completed,** before
+any synchronization.
 
 ```
 ?? AGENTS.md
@@ -240,19 +256,21 @@ the moment it was checked. If it reappears, the *cause* is the thing to investig
 ?? docs/
 ```
 
-All governance files and this report are **untracked**. Nothing is staged. **The
-`spreadsheets` entry is gone.** No implementation artifacts appear in the working tree — no
+All governance files and this report were **untracked**. Nothing was staged. **The
+`spreadsheets` entry is gone.** No implementation artifacts appeared in the working tree — no
 source, schema, dependency, or test files were created.
 
-## 15. No commit occurred
+## 15. No commit occurred — historical G2 closure state
 
-**NOT COMMITTED.** No commit was made in this checkpoint, and no commit has been made in any
-checkpoint. The entire G2 closure lives in the untracked working tree, by design.
+**At the time the G2 closure work itself was completed: NOT COMMITTED.** No commit was made in
+that checkpoint, and no commit had been made in any prior checkpoint. The entire G2 closure
+lived in the untracked working tree, by design.
 
-## 16. No push occurred
+## 16. No push occurred — historical G2 closure state
 
-**NOT PUSHED.** No push, no force push, no branch change, no remote reconfiguration, no GitHub
-settings change. Branch `main` remains up to date with `origin/main`; the remote is untouched.
+**At the time the G2 closure work itself was completed: NOT PUSHED.** No push, no force push,
+no branch change, no remote reconfiguration, no GitHub settings change. Branch `main` remained
+up to date with `origin/main`; the remote was untouched.
 
 ## 17. Next gate
 
@@ -271,9 +289,51 @@ should be surfaced to the owner, not answered by inference.
 
 ---
 
+## 18. Record Integrity Repair — Post-Sync
+
+**Why this section exists.** Sections 13–16 above and the header note were written at the
+moment the G2 closure work was completed, when nothing had been committed. Those statements
+were true then, but they became stale immediately after the owner separately authorized a
+two-artifact durable synchronization. This section corrects the record so that the report's
+Git history matches the actual repository history. **No G2 product decision was changed by this
+repair** — G2-A through G2-H, the approved workflow, and every evidence boundary in sections
+2–17 are untouched.
+
+**The actual authorized synchronization commit:**
+
+```
+edfad619b1959e38af25c896e8745b4e8947aeca
+```
+
+- Short SHA: `edfad61`
+- Message: `docs: sync LS-0.3 G2 report and memory`
+- Branch: `main`; pushed to `origin/main`
+- **Exactly two files** were included in that commit:
+  1. `LS-0.3 G2 — Final Report.md`
+  2. `docs/PROJECT-MEMORY.md`
+
+**What was deliberately not committed.** The six local governance files were intentionally
+excluded from that synchronization and remain untracked unless separately authorized:
+`AGENTS.md`, `CLAUDE.md`, `docs/ACTIVE-PLAN.md`, `docs/CURRENT-HANDOFF.md`,
+`docs/DECISIONS.md`, `docs/SOURCE-REGISTRY.md`. This repair does **not** imply they were
+committed.
+
+**Status of this repair itself: NOT COMMITTED / NOT PUSHED.** This record-integrity correction
+was made only in the working tree, intentionally, so it can be reviewed independently. It is
+not committed, not pushed, not amended onto `edfad61`, and no remote history was altered.
+
+**Unchanged by this repair:** the G2 specification remains owner-approved; **implementation
+remains unauthorized** and has not started; G2-A through G2-H are preserved verbatim; IWR-007
+remains resolved, with its previously recorded caveat that the cause of possible recurrence
+remains **[NOT VERIFIED]**.
+
+---
+
 ## Final status
 
 **CURRENT PHASE:** G2 — specification closed and owner-approved; awaiting the next
 (owner-authorized) implementation-planning gate.
 
-**NOT COMMITTED / NOT PUSHED.**
+**Git state:** the G2 report and project memory were committed and pushed in the authorized
+two-artifact synchronization as `edfad61` on `main` → `origin/main`. This record-integrity
+repair is **NOT COMMITTED / NOT PUSHED**.

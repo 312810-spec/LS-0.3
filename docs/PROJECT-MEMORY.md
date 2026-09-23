@@ -40,6 +40,13 @@ workarounds only. **This is not a conversation transcript.**
   exception precedence. See `docs/ACTIVE-PLAN.md` section O and `docs/DECISIONS.md`.
 - **IWR-007 RESOLVED (2026-09-23).** The recurring stray `spreadsheets` file was deleted with
   owner authorization, and its absence was independently verified. See IWR-007 below.
+- **G2 report + memory synchronized (2026-09-23).** After G2 closure, the owner authorized a
+  separate two-artifact durable sync: commit `edfad619b1959e38af25c896e8745b4e8947aeca`
+  (`edfad61`), `docs: sync LS-0.3 G2 report and memory`, containing exactly
+  `LS-0.3 G2 — Final Report.md` and `docs/PROJECT-MEMORY.md`, pushed to `origin/main`. The six
+  governance files were intentionally excluded and remain untracked. A subsequent
+  record-integrity correction updated the stale pre-sync Git statements in those same two
+  files; that correction itself is uncommitted and unpushed.
 - No implementation authorization has been granted.
 
 ## Operating model
@@ -58,12 +65,27 @@ ChatGPT memory may supplement but **must not replace** repository memory.
 
 ## Verified repository state
 
-- Branch: `main`. Upstream: `origin/main`. Working tree before the G2 checkpoint: governance
-  files untracked and uncommitted by design (`AGENTS.md`, `CLAUDE.md`, `docs/`), plus the
-  stray `spreadsheets` file. **No commit or push has occurred in any checkpoint.**
-- Baseline HEAD: `2d099a247ab7232265a0d9e96fd11458094421ba` (parent `49ca35e`), unchanged
-  since G0.
-- Tracked files: `LIKHA-SIS-FRESH-START-CONSOLIDATED-TRUTH.md`, `README.md`.
+- Branch: `main`. Upstream: `origin/main`.
+- **Chronological Git history.** *At the time the G2 closure work itself was completed*,
+  nothing had been committed in any checkpoint: the governance files were untracked and
+  uncommitted by design (`AGENTS.md`, `CLAUDE.md`, `docs/`), the G2 report was untracked, and
+  HEAD sat on the G0 baseline. *After* that closure, the owner separately authorized a
+  two-artifact durable synchronization, which produced:
+
+  - **Commit:** `edfad619b1959e38af25c896e8745b4e8947aeca` (short SHA `edfad61`)
+  - **Message:** `docs: sync LS-0.3 G2 report and memory`
+  - **Exactly two files:** `LS-0.3 G2 — Final Report.md` and `docs/PROJECT-MEMORY.md`
+  - **Pushed** to `origin/main`.
+
+  So the earlier statement "No commit or push has occurred in any checkpoint" was true only
+  as of the pre-sync G2 closure checkpoint and is no longer accurate.
+- **Intentionally excluded from that synchronization** and still locally untracked unless
+  separately authorized: `AGENTS.md`, `CLAUDE.md`, `docs/ACTIVE-PLAN.md`,
+  `docs/CURRENT-HANDOFF.md`, `docs/DECISIONS.md`, `docs/SOURCE-REGISTRY.md`.
+- Baseline HEAD before the sync: `2d099a247ab7232265a0d9e96fd11458094421ba`
+  (parent `49ca35e`), unchanged since G0. Current HEAD: `edfad61`.
+- Tracked files: `LIKHA-SIS-FRESH-START-CONSOLIDATED-TRUTH.md`, `README.md`,
+  `LS-0.3 G2 — Final Report.md`, `docs/PROJECT-MEMORY.md`.
 - `.claude/settings.local.json` exists locally and is **intentionally untracked**. Do not
   modify, delete, track, or rename it.
 
