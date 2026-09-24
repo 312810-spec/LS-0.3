@@ -46,8 +46,66 @@ workarounds only. **This is not a conversation transcript.**
   `LS-0.3 G2 — Final Report.md` and `docs/PROJECT-MEMORY.md`, pushed to `origin/main`. The six
   governance files were intentionally excluded and remain untracked. A subsequent
   record-integrity correction updated the stale pre-sync Git statements in those same two
-  files; that correction itself is uncommitted and unpushed.
-- No implementation authorization has been granted.
+  files; that correction itself was committed and pushed as
+  `cb42270fa0a71c0b588e71c912b54aacfa9738a4` (`docs: repair LS-0.3 G2 record integrity`),
+  exactly two files, to `origin/main`.
+- **G3 implementation planning complete (2026-09-23).** The owner authorized a planning-only
+  gate: convert the owner-approved G2 specification into an implementation-ready plan for one
+  vertical slice, **without implementing anything**. The plan is in `docs/ACTIVE-PLAN.md`
+  ("G3 — Implementation Planning", sections A–L); the report is
+  `LS-0.3 G3 — Final Report.md`. No code, schema, dependency, database, UI, test, or
+  configuration was created. No commit or push occurred in G3. G3 surfaced six owner decisions
+  that block G4 (see "G3 planning findings" below); **none was answered**.
+- No implementation authorization has been granted. G4 has not been authorized.
+
+## AI-evidence integrity findings (2026-09-24)
+
+> **Provisional status — owner-declared (2026-09-24).** The AI-Evidence-related edits in this file
+> — this section, the entry naming the AI-Evidence report in the verified-repository-state list
+> below, and the three AI-evidence lesson bullets under *Lessons carried forward* — are
+> **PROVISIONAL UNTIL OWNER APPROVAL**; see the note at the head of `docs/DECISIONS.md`. The G3
+> records and all other findings in this file are outside this status. **G4 remains NOT
+> AUTHORIZED.**
+
+Durable record of what the AI Hallucination & Evidence Integrity gate established. Report in
+`LS-0.3 AI Hallucination & Evidence Integrity — Final Report.md`; boundary recorded in
+`docs/ACTIVE-PLAN.md` ("AI Hallucination & Evidence Integrity — Planning Boundary").
+**Nothing here is implemented, and no AI feature is authorized.**
+
+**Established:**
+
+- **The live hallucination threat is development-time AI, not in-product AI.** No AI feature exists
+  and none is authorized (ACTIVE-PLAN section M). The active exposure is Atria-CC output becoming
+  durable project record. It produced one caught failure: during G3 a report asserted no tracked
+  file had been modified, and `git diff` proved `docs/PROJECT-MEMORY.md` was (76 insertions,
+  3 deletions). Executed verification (hierarchy level 3) outranked an AI claim (level 7), and it
+  was corrected and disclosed rather than hidden.
+- **Four of seven threat classes are already defended by existing, executed authority.**
+  Policy/DepEd hallucination (the binding classification), learner-data hallucination (ACTIVE-PLAN
+  section J's inference prohibitions), provenance hallucination (IWR-004/005/006), and architecture
+  hallucination (G2-F's schema deferral). New rules are needed only for the other three.
+- **The authority hierarchy is right in order, wrong in granularity.** It adjudicates documents,
+  not sentences — and a hallucination is always a single sentence. The G3 catch worked only because
+  a verification step happened to run against that specific claim.
+- **No contradiction exists in the truth document.** Two candidate contradictions were examined and
+  both resolve without editing it: §29's governance states vs G2-E's deferral of their machinery
+  (a principle vs its implementation, phased later by §48), and §27's 0.2-era "Claude Code primary"
+  vs RES-003's Atria-only rule (§27 itself warns not to assume Anthropic models are in use, and
+  current governance outranks prior records). The truth document was left untouched.
+
+**Two owner decisions surfaced as UNRESOLVED — neither G4-blocking, neither answered:**
+
+1. **DECISION-010** — adopt the evidence-integrity authority principle: AI generation alone can
+   never make information authoritative.
+2. **DECISION-011** — adopt the seven-state evidence vocabulary, renaming `VERIFIED` to
+   `SOURCE_VERIFIED` so it does not collide with the existing source-evidence label.
+
+**Binding restraints recorded:** do not build provenance or evidence-state machinery in G4 (the
+boundary applies when an AI feature is first authorized); do not import TANAW's Submit → Certify →
+Lock chain, because G2-E defers audit/locking/approval machinery and importing it would reopen that
+deferral.
+
+**This gate added zero G4 blockers.** The six G4-blocking decisions from G3 are unchanged.
 
 ## Operating model
 
@@ -83,9 +141,14 @@ ChatGPT memory may supplement but **must not replace** repository memory.
   separately authorized: `AGENTS.md`, `CLAUDE.md`, `docs/ACTIVE-PLAN.md`,
   `docs/CURRENT-HANDOFF.md`, `docs/DECISIONS.md`, `docs/SOURCE-REGISTRY.md`.
 - Baseline HEAD before the sync: `2d099a247ab7232265a0d9e96fd11458094421ba`
-  (parent `49ca35e`), unchanged since G0. Current HEAD: `edfad61`.
+  (parent `49ca35e`), unchanged since G0. HEAD after the G2 sync and repair: `cb42270`
+  (full `cb42270fa0a71c0b588e71c912b54aacfa9738a4`), the child of `edfad61`. Unchanged through
+  G3 — G3 made no commits.
 - Tracked files: `LIKHA-SIS-FRESH-START-CONSOLIDATED-TRUTH.md`, `README.md`,
   `LS-0.3 G2 — Final Report.md`, `docs/PROJECT-MEMORY.md`.
+- Untracked, uncommitted by design: `AGENTS.md`, `CLAUDE.md`, `docs/ACTIVE-PLAN.md`,
+  `docs/CURRENT-HANDOFF.md`, `docs/DECISIONS.md`, `docs/SOURCE-REGISTRY.md`,
+  `LS-0.3 G3 — Final Report.md`, `LS-0.3 AI Hallucination & Evidence Integrity — Final Report.md`.
 - `.claude/settings.local.json` exists locally and is **intentionally untracked**. Do not
   modify, delete, track, or rename it.
 
@@ -368,6 +431,49 @@ approved; implementation is a separate, future, owner-authorized gate and has no
 DEPED-VERIFIED FACT. The eight decisions above are the former. The four verified DepEd findings
 in `docs/SOURCE-REGISTRY.md` are the latter, and they are far narrower than any of the eight.
 
+## G3 planning findings (2026-09-23)
+
+Durable record of what the implementation-planning gate established. Full plan in
+`docs/ACTIVE-PLAN.md` ("G3 — Implementation Planning", A–L); report in
+`LS-0.3 G3 — Final Report.md`. **Nothing here is implemented.**
+
+**Established:**
+
+- The G2 specification is sufficient to plan a single vertical slice without answering any
+  further product question. The slice is the eleven-step workflow; the behavior it exists to
+  prove is `ENTER → SAVE → CLOSE → REOPEN → SAME DATA IS PRESENT`.
+- Encryption (DECISION-004), identity/authorization (DECISION-005), and sync (DECISION-006) are
+  **not** blockers for a synthetic-data local prototype. DECISION-004 gates real learner PII,
+  and the slice uses none. This is a genuine planning simplification, not a deferral of a
+  security requirement.
+- No score range, minimum, or maximum may be validated. G2-B approved no maximum and no scale
+  was ever established, so "validate the score" has no rule to implement. The only genuine
+  validations are the closed four-state attendance set and "an evidence item carries a name."
+
+**Six decisions surfaced as G4-blocking — none answered:**
+
+1. **Learning-evidence item granularity.** G2-B approved the field pair
+   "Activity/Assessment Name + **Learner** Score" and G2-H approved multiple items per session,
+   but neither settled what one item *is*: one learner's outcome on a named activity
+   (per-learner items) or one named activity holding a score per learner (per-activity items).
+   The two readings produce different recording UIs, different status counts, and different
+   persistence shapes. ACTIVE-PLAN section G's note that an item is identified by "session +
+   name" is only unique under the per-activity reading — confirming the ambiguity is real.
+2. **Technology stack for LS-0.3.** The 0.2-era direction (Tauri 2 + React/TypeScript + local
+   SQLite) is **[HISTORICAL]**. LS-0.3 has not ratified it, and AGENTS.md forbids inheriting
+   legacy components by default.
+3. **DECISION-002 — product naming.** The prototype UI must display a product name.
+4. **DECISION-003 — accessibility conformance target.** No measurable acceptance bar exists.
+5. **One session per class per day.** G2 left this **[PROPOSED]**; G4 must know whether starting
+   a session for a class that already has one today reopens it or creates a second.
+6. **The incomplete-session completeness predicate.** Deferred in G2. A candidate derivation —
+   attendance-complete iff no learner is unmarked; evidence-complete iff at least one item is
+   recorded — is **[PROPOSED] and not decided**. Blocks only the status flag, not the core
+   persistence proof.
+
+**Recorded as [UNRESOLVED] limitations, not implementation blockers:** the DepEd meaning of
+"Late" and "Excused"; whether attendance remarks are required; observable exception precedence.
+
 ## Lessons carried forward
 
 Validated in the fresh-start truth document and confirmed by direct experience in this
@@ -417,3 +523,32 @@ repository:
 - **[UNRESOLVED — DEFERRED] is a legitimate status, not a punt.** An item that follows from
   already-approved rules, or that is pure presentation ordering, can safely wait. An item that
   changes what the teacher sees or what the data model is cannot. Say which is which, and why.
+- **A specification can be complete for planning while still leaving implementation decisions
+  open.** G3 planned the whole slice without answering six owner decisions, by separating what
+  the owner already settled (behavior) from what only the owner can settle (naming, conformance
+  bar, stack, data-meaning granularity). Planning's job is to draw that line sharply, not to
+  fill in the owner's side of it.
+- **"Approved fields" is not "approved granularity."** G2-B approved the *pair* name + learner
+  score; G2-H approved *cardinality*. Neither settled what one item *is* — and that single
+  unresolved question changes the recording UI, the status count, and the persistence shape.
+  Approving a field list does not approve the shape of the thing that holds the fields.
+- **A security gate can gate a data class rather than a phase.** DECISION-004 (encryption at
+  rest) does not block the synthetic prototype, because it gates *real learner PII*, not
+  "implementation." Naming the exact thing a gate protects is what lets the rest of the plan
+  proceed honestly instead of stalling on an unrelated prerequisite.
+- **No validation rule exists where no rule was approved.** G2 approved no score maximum and no
+  scale, so there is no range to validate — inventing one would silently reintroduce a grading
+  decision the owner deferred. Absence of a rule is itself a specification fact.
+- **A hallucination is always a single sentence, and a hierarchy that adjudicates documents cannot
+  reach it.** The G3 report was hierarchy-compliant as a document while one claim inside it was
+  false. The authority hierarchy's order is correct — AI inference last — but its granularity is
+  not. Apply it per claim, and verify the specific claim rather than the document that carries it.
+- **"Defended already" is the most valuable finding an audit can produce.** Four of seven AI
+  hallucination threat classes turned out to be blocked by rules LS-0.3 had already executed — the
+  binding classification, the status-view inference prohibitions, the source-registry discipline.
+  Auditing for what already works is what keeps an AI-evidence gate from inventing a second
+  constitution, which is the failure mode truth-document §51 number 5 warns about.
+- **A deferral is also a restraint on the auditor.** G2-E defers audit history, record locking, and
+  approval workflows. TANAW's certification chain superficially looks like the natural enforcement
+  mechanism for an evidence boundary — and importing it would silently reopen a deferral the owner
+  already made. Check every proposed mechanism against the deferred list before proposing it.
